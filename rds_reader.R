@@ -12,8 +12,7 @@ rds_reader <-
     if (!is.character(dir)) stop('The argument dir must be a vector of length one, with the value provided of character type')
     
     # ** length(dir) == 1----
-    if (length(dir) > 1) stop('The argument dir must be a vector of length one')
-    if (length(dir) == 0) stop('The argument dir must be a vector of length one')
+    if (length(dir) != 1) stop('The argument dir must be a vector of length one')
     
     # ** fs::dir_exists(dir) ----
     if (!fs::dir_exists(dir)) stop('The argument dir must be of an already existing directory')
