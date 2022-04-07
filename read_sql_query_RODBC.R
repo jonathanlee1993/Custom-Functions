@@ -4,7 +4,7 @@ read_sql_query_RODBC <-
   return(
     RODBC::sqlQuery(con, {str_glue('{dir}/{query}.sql') %>% readr::read_file()}) %>%
       as_tibble() %>%
-      mutate(across(where(is.factor),as.character))
+      mutate(across(where(is.factor), as.character))
   )
   
 }
