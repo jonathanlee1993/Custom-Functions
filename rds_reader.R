@@ -27,10 +27,7 @@ rds_reader <-
       mutate(obj_name_chr = path %>% {gsub(dir, '', ., fixed = TRUE)} %>% str_replace_all('.rds', ''))
     
     rds_files_tbl <- rds_paths_tbl %>%
-      select(path, obj_name_chr) %>%
-      mutate(obj = path %>% map(~ read_rds(.))) %>%
-      select(-path) %>%
-      mutate(obj_name_chr = as.list(obj_name_chr))
+      mutate(obj = path %>% map(~ read_rds(.))) 
     
     # SECTION 3: ASSIGNING RDS FILES WITHIN GLOBAL ENVIRONMENT ----
     invisible(pmap(list(rds_files_tbl$obj_name_chr, rds_files_tbl$obj), ~assign(.x, .y, envir = .GlobalEnv)))
