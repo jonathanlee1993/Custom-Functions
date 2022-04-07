@@ -35,7 +35,7 @@ rds_reader <-
     
     # SECTION 4: OUTPUT MESSAGE ----
     
-    message(str_glue('All RDS files located in the: \n"{dir}"\ndirectory have now been loaded into the Global Environment\n\n'))
+    message(str_glue('All RDS files located in the: \n"{dir}"\ndirectory have now been loaded into the global environment\n\n'))
     message(str_glue("Files that now exist include: \n\n{rds_files_tbl$obj_name_chr %>% paste(collapse = '\n')}"))
     
   }
