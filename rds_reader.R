@@ -21,6 +21,7 @@ rds_reader <-
     # ** Directory provided has >=1 RDS files (Input later) ----
     
     # SECTION 2: READING RDS FILES ----
+    
     rds_paths_tbl <- fs::dir_info(dir)
     
     rds_paths_tbl %<>%
@@ -30,9 +31,11 @@ rds_reader <-
       mutate(obj = path %>% map(~ read_rds(.))) 
     
     # SECTION 3: ASSIGNING RDS FILES WITHIN GLOBAL ENVIRONMENT ----
+    
     invisible(pmap(list(rds_files_tbl$obj_name_chr, rds_files_tbl$obj), ~assign(.x, .y, envir = .GlobalEnv)))
     
     # SECTION 4: OUTPUT MESSAGE ----
+    
     message(str_glue('All RDS files located in the: \n"{dir}"\ndirectory have now been loaded into the Global Environment'))
     
   }
