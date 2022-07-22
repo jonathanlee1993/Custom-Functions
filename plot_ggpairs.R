@@ -1,3 +1,4 @@
+# plot_ggpairs function written by Matt Dancho
 
 plot_ggpairs <- function(data, color = NULL, density_alpha = 0.5) {
     
