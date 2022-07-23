@@ -10,14 +10,14 @@ get_cor <- function(data, target, use = "pairwise.complete.obs",
     feature_name <- quo_name(feature_expr)
     
     data_cor <- data %>%
-        mutate_if(is.character, as.factor) %>%
-        mutate_if(is.factor, as.numeric) %>%
+        mutate(across(where(is.character),as.factor)) %>%
+        mutate(across(where(is.factor),as.numeric)) %>%
         cor(use = use) %>%
         as.tibble() %>%
         mutate(feature = names(.)) %>%
         select(feature, !! feature_expr) %>%
         filter(!(feature == feature_name)) %>%
-        mutate_if(is.character, as_factor)
+        mutate(across(where(is.character),as.factor))
     
     if (fct_reorder) {
         data_cor <- data_cor %>% 
