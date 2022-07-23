@@ -25,7 +25,7 @@ plot_hist_facet <- function(data, fct_reorder = FALSE, fct_rev = FALSE,
         ggplot(aes(x = value, group = key)) +
         geom_histogram(bins = bins, fill = fill, color = color) +
         facet_wrap(~ key, ncol = ncol, scale = scale) + 
-        theme_tq()
+        tidyquant::theme_tq()
     
     return(g)
     
